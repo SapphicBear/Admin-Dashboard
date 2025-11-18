@@ -1,0 +1,32 @@
+/* Try and rely on CSS grid for the layout of this project! */
+
+:root {
+    line-height: 1.5;
+
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.page-container,
+.top-header,
+.side-nav,
+.content-area {
+    display: grid;
+}
+
+.page-container {
+    grid-template-columns: 1fr 5fr;
+}
+
+.top-header {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.side-nav {
+    grid-column: 1;
+    grid-row: 1 / 2;
+}
