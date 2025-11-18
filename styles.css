@@ -5,6 +5,10 @@
 
 }
 
+body {
+    background: rgb(168, 162, 162);
+}
+
 body, 
 button, 
 p,
@@ -24,12 +28,12 @@ h4 {
 .mini-searchbar,
 .notification-area,
 .lower-toolbar,
-.profile-area {
+.profile-area,
+.projects-area {
     display: grid;
 }
 
 .page-container {
-    background: green;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: minmax(150px, 1fr) 3.1fr;
     height: auto;
@@ -107,4 +111,40 @@ h4 {
 .content-area {
     grid-column: 2;
     grid-row: 2;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 5ch 4fr;
+    gap: 0.5rem;
+    margin: 1rem;
+}
+
+.your-projects {
+    font-weight: 700;
+    font-size: 18px;
+    align-self: center;
+}
+
+.projects-area {
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    grid-row: 2 / 3;
+}
+
+.card {
+    background: white;
+    text-align: left;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 8rem;
+    box-shadow: black 4px 4px 4px;
+    border-left: orange 0.5rem solid;
+}
+p[class="title"] {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+p[class="text"] {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(31, 29, 29);
 }
