@@ -9,11 +9,13 @@
     --white: rgb(255, 247, 250);
     --grey-accent: rgb(218, 214, 215);
     --drop-shadow: rgb(172, 155, 160);
+    --black: rgb(15, 15, 15);
 
 }
 
 body {
     background: var(--grey-accent);
+    color: var(--black);
 }
 
 li {
@@ -24,7 +26,9 @@ li {
 
 a {
     text-decoration: none;
+    color: var(--white);
 }
+
 
 body, 
 button, 
@@ -38,6 +42,10 @@ h4 {
     border: none;
 }
 
+img {
+    border-radius: 50%;
+}
+
 .page-container,
 .top-header,
 .side-nav,
@@ -47,13 +55,15 @@ h4 {
 .lower-toolbar,
 .profile-area,
 .projects-area,
-.announcements {
+.announcements,
+.card,
+.trending-wrapper {
     display: grid;
 }
 
 .page-container {
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: minmax(150px, 10%) minmax(33%, 100%);
+    grid-template-rows: minmax(170px, 15%) minmax(33%, 100%);
 }
 
 
@@ -71,6 +81,12 @@ h4 {
     padding: 1.2rem;
 }
 
+.search-area {
+    display: flex;
+    align-content: center;
+    gap: 1rem;
+}
+
 .search-area > input {
     font-family: inherit;
     min-width: 85%;
@@ -83,12 +99,34 @@ h4 {
 }
 
 .search-icon::before {
-    content:"search ";
+    content:"";
+    display: inline-block;
+    mask: url(./imgs/magnify.svg) no-repeat;
+    mask-size: cover;
+    background: var(--black);
+    width: 25px;
+    height: 25px;
 }
 .notification-area {
-    gap: 1rem;
-    justify-items: start;
-    grid-auto-flow: column;
+    gap: 0.5rem;
+    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 100px));
+}
+
+.notif-icon {
+    display: inline-block;
+    mask: url(./imgs/bell-outline.svg) no-repeat;
+    mask-size:cover;
+    background: var(--black);
+    width: 25px;
+    height: 25px;
+    justify-self: right;
+}
+
+.notification-area .profile-picture {
+    width: 40px;
+    height: 40px;
+    background: var(--main-pink);
 }
 
 .lower-toolbar {
@@ -103,6 +141,13 @@ h4 {
     
 }
 
+.profile-area .profile-picture {
+    width: 60px;
+    height: 60px;
+    background: var(--main-pink);
+    justify-self: right;
+}
+
 .button-area {
     justify-self: start;
 }
@@ -115,6 +160,14 @@ h4 {
     margin: 1rem;
     background: var(--main-pink);
     color: var(--white);
+}
+
+button:hover {
+    background: var(--card-accent);
+}
+
+a:hover {
+    color: var(--card-accent);
 }
 
 /* Sidebar area */
@@ -158,15 +211,55 @@ li {
     gap: 4px;
 }
 
-.nav-area li:nth-child(1)::before {
+li::before {
     content: "";
     display: inline-block;
-    mask: url(./imgs/home.svg) no-repeat;
     mask-size: cover;
     background: var(--white);
     width: 25px;
     height: 25px;
 }
+
+li:hover::before {
+    background: var(--card-accent);
+}
+
+.nav-area li:nth-child(1)::before {
+    mask: url(./imgs/home.svg) no-repeat;
+}
+
+.nav-area li:nth-child(2)::before {
+    mask: url(./imgs/account-details.svg) no-repeat;
+}
+
+.nav-area li:nth-child(3)::before {
+    mask: url(./imgs/message-reply.svg) no-repeat;
+}
+
+.nav-area li:nth-child(4)::before {
+    mask: url(./imgs/clock-time-three.svg) no-repeat;
+}
+
+.nav-area li:nth-child(5)::before {
+    mask: url(./imgs/note-multiple.svg) no-repeat;
+}
+
+.nav-area li:nth-child(6)::before {
+    mask: url(./imgs/account-group.svg) no-repeat;
+}
+
+.settings-area li:nth-child(1)::before {
+    mask: url(./imgs/cog.svg) no-repeat;
+}
+
+.settings-area li:nth-child(2)::before {
+    mask: url(./imgs/help-circle.svg) no-repeat;
+}
+
+.settings-area li:nth-child(3)::before {
+    mask: url(./imgs/shield-check.svg) no-repeat;
+}
+
 
 /* Content area */
 .content-area {
@@ -200,16 +293,53 @@ li {
     border-left: var(--card-accent) 0.5rem solid;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
+    grid-template-rows: 1fr; 
+    gap: 0 0.5rem;
+    
 }
 .content-area p[class="title"] {
     font-size: 18px;
     font-weight: 700;
+    grid-column: 1;
 }
 
 .content-area p[class="text"] {
     font-size: 12px;
     font-weight: 500;
     color: var(--grey-text);
+    grid-column: 1;
+    grid-row: 2;
+}
+
+a, .project-icons {
+    grid-row: 3;
+    justify-self: right;
+}
+
+.project-icons {
+    display: inline-block;
+    mask-size: cover;
+    background: var(--black);
+    height: 25px;
+    width: 25px;
+}
+
+.project-icons:hover {
+    background: var(--card-accent);
+}
+
+.project-icons.star {
+    mask: url(./imgs/star-plus.svg) no-repeat;
+    
+}
+
+.project-icons.add {
+    mask: url(./imgs/playlist-plus.svg) no-repeat;
+
+}
+
+.project-icons.share {
+    mask: url(./imgs/share-variant-outline.svg) no-repeat;
 }
 
 /* Announcements */
@@ -253,19 +383,30 @@ hr {
     border-radius: 8px;
     padding: 1rem;
     box-shadow: var(--drop-shadow) 4px 4px 4px;
+    gap: 1rem;
 }
 
 .trending-card {
     display: grid;
     grid-template-columns: minmax(25px, 75px) 16ch;
     grid-auto-flow: column;
+    grid-template-rows: 1fr;
     
+}
+
+.trending-card .profile-picture {
+    height: 50px;
+    width: 50px;
+    background: var(--main-pink);
 }
 .trending-card p {
     grid-column: 2;
     font-size: 14px;
 }
+
+.trending-card p.username {
+    font-weight: 700;
+}
 p[class="user-title"] {
-    margin-bottom: 0.5rem;
     color: var(--grey-text);
 }
