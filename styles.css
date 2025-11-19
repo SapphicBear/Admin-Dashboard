@@ -128,15 +128,20 @@ h4 {
     font-weight: 700;
     font-size: 1.2em;
 }
-
-.logo {
+.logo-area {
     grid-row: 1;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 0.4em;
 }
-
-.logo::before {
-    content:"LOGO";
-    font-size: 20px;
+.logo {
+    mask: url(./imgs/view-dashboard.svg) no-repeat;
+    mask-size: cover;
+    background: var(--white);
+    height: 50px;
+    width: 50px;
 }
 
 .nav-area {
@@ -149,6 +154,18 @@ h4 {
 
 li {
     margin-bottom: 0.5rem;
+    display: flex;
+    gap: 4px;
+}
+
+.nav-area li:nth-child(1)::before {
+    content: "";
+    display: inline-block;
+    mask: url(./imgs/home.svg) no-repeat;
+    mask-size: cover;
+    background: var(--white);
+    width: 25px;
+    height: 25px;
 }
 
 /* Content area */
