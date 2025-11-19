@@ -7,6 +7,7 @@
 
 body {
     background: rgb(168, 162, 162);
+    min-height: 100dvh;
 }
 
 body, 
@@ -29,13 +30,14 @@ h4 {
 .notification-area,
 .lower-toolbar,
 .profile-area,
-.projects-area {
+.projects-area,
+.announcements {
     display: grid;
 }
 
 .page-container {
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: minmax(150px, 1fr) 3.1fr;
+    grid-template-rows: minmax(150px, 0.6fr) minmax(33%, 120vh);
     height: auto;
 }
 
@@ -111,13 +113,13 @@ h4 {
 .content-area {
     grid-column: 2;
     grid-row: 2;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 5ch 4fr;
-    gap: 0.5rem;
-    margin: 1rem;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 5ch minmax(58%, 100%) 5ch minmax(33%, 80%);
+    gap: 0.5rem 0;
+    padding: 1rem;
 }
 
-.your-projects {
+.area-title {
     font-weight: 700;
     font-size: 18px;
     align-self: center;
@@ -125,8 +127,8 @@ h4 {
 
 .projects-area {
     gap: 1rem;
-    grid-template-columns: repeat(2, minmax(250px, 1fr));
-    grid-row: 2 / 3;
+    grid-template-columns: repeat(2, minmax(150px, 45%));
+    grid-row: 2;
 }
 
 .card {
@@ -137,14 +139,57 @@ h4 {
     min-height: 8rem;
     box-shadow: black 4px 4px 4px;
     border-left: orange 0.5rem solid;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
-p[class="title"] {
+.content-area p[class="title"] {
     font-size: 18px;
     font-weight: 700;
 }
 
-p[class="text"] {
+.content-area p[class="text"] {
     font-size: 12px;
     font-weight: 500;
     color: rgb(31, 29, 29);
+}
+
+/* Announcements */
+
+.area-title.announcements {
+    grid-row: 1;
+}
+.announcements {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.announcements-wrapper {
+    background:white;
+    padding: 2rem;
+    border-radius: 8px;
+}
+.announcements p[class="title"] {
+    font-size: 1rem;
+}
+.announcements p[class="info"] {
+    font-size: 14px;
+    color: rgb(37, 37, 37);
+}
+hr {
+    margin-top: 1em;
+}
+
+.area-title.trending {
+    grid-row: 3;
+}
+
+.trending {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.trending-wrapper {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
 }
