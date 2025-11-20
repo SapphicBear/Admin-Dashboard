@@ -265,8 +265,8 @@ li:hover::before {
 .content-area {
     grid-column: 2;
     grid-row: 2;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 5ch minmax(150px, 420px) 5ch minmax(150px, 1fr);
+    grid-template-columns: 3fr minmax(15%, 25%);
+    grid-template-rows: 5ch minmax(10%, 48%) 5ch minmax(15%, auto);
     gap: 0.5rem 0;
     padding: 1rem;
 }
@@ -279,7 +279,7 @@ li:hover::before {
 
 .projects-area {
     gap: 1rem;
-    grid-template-columns: repeat(2, minmax(150px, 45%));
+    grid-template-columns: repeat(2, minmax(15%, 45%));
     grid-row: 2;
 }
 
@@ -357,6 +357,7 @@ a, .project-icons {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--drop-shadow) 4px 4px 4px;
+    align-self: start;
 }
 .announcements p[class="title"] {
     font-size: 1rem;
